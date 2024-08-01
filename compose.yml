@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  coton_clone_1:
+    image: coton_mullvad
+    container_name: coton_clone_1
+    cgroup: host
+    security_opt:
+      - seccomp=unconfined
+    privileged: true
+    tmpfs:
+      - /run
+      - /run/lock
+    volumes:
+      - ./:/app  # Monte le répertoire courant dans le conteneur
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
